@@ -125,7 +125,7 @@ const SITE_FOOTER_TEMPLATE = `
       <ul>
         <li><span>Thứ 2 đến Thứ 6</span><b>08:00 – 17:00</b></li>
         <li><span>Thứ 7</span><b>08:00 – 12:00</b></li>
-        <li><span>Chủ nhật</span><b>Hỗ trợ trực tuyến</b></li>
+        <li><span>Chủ nhật</span><b>Nghỉ</b></li>
       </ul>
     </div>
     <div>
@@ -202,7 +202,7 @@ function renderSharedComponents() {
           document.dispatchEvent(new CustomEvent('avis:header-rendered'));
         }
       })
-      .catch(() => {});
+      .catch(() => { });
 
     fetch('footer.html?t=' + Date.now())
       .then(res => res.ok ? res.text() : null)
@@ -212,7 +212,7 @@ function renderSharedComponents() {
           document.dispatchEvent(new CustomEvent('avis:footer-rendered'));
         }
       })
-      .catch(() => {});
+      .catch(() => { });
   }
 }
 
