@@ -1,0 +1,89 @@
+<!-- System Status Bar -->
+<div class="topline">
+  <div class="shell topbar">
+    <div class="top-contact">
+      <a href="mailto:admin@avis.io.vn" class="top-item">
+        <span class="top-icon">✉</span>
+        <span>admin@avis.io.vn</span>
+      </a>
+      <span class="top-divider"></span>
+      <span class="top-item top-address">
+        <span class="top-icon">⌖</span>
+        <span>Tầng 5, ADG Tower, 17 Lê Văn Thiêm, Thanh Xuân, Hà Nội</span>
+      </span>
+    </div>
+    <div class="top-actions">
+      <a href="tel:0879423777" class="top-hotline">
+        <span class="top-hotline-icon">☎</span>
+        <span>0879.423.777</span>
+      </a>
+      <span class="top-divider"></span>
+      <div class="top-social">
+        <a href="https://www.facebook.com/attechjsc" target="_blank" rel="noopener" aria-label="Facebook">Facebook</a>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Main Navigation Header -->
+<header class="header">
+  <div class="shell nav-wrap">
+    <a href="index.html" class="brand" aria-label="AVIS Việt Nam">
+      <img src="assets/avis-logo.jpg" alt="AVIS Việt Nam">
+    </a>
+
+    <!-- Category Menu Bar with Horizontal Scroll Support -->
+    <nav id="main-nav" class="main-nav" aria-label="Menu chính">
+      <a href="index.html" data-nav="index">TRANG CHỦ</a>
+      <a href="ve-chung-toi.html" data-nav="ve-chung-toi">VỀ CHÚNG TÔI</a>
+      <a href="dich-vu.html" data-nav="dich-vu">DỊCH VỤ</a>
+      <a href="doi-tac.html" data-nav="doi-tac">ĐỐI TÁC</a>
+      <a href="tuyen-dung.html" data-nav="tuyen-dung">TUYỂN DỤNG</a>
+      <a href="lien-he.html" data-nav="lien-he">LIÊN HỆ</a>
+    </nav>
+
+    <!-- Expanding Inline Search Bar (covers main-nav when active) -->
+    <div class="inline-search-bar" id="inline-search-bar" role="search" aria-expanded="false">
+      <div class="search-input-wrap">
+        <span class="search-input-icon">⌕</span>
+        <input type="text" id="inline-search-input"
+          placeholder="Tìm kiếm dịch vụ, giải pháp, dự án, vị trí tuyển dụng..." autocomplete="off" spellcheck="false">
+        <button type="button" class="search-clear-btn" id="search-clear-btn" aria-label="Xóa từ khóa"
+          title="Xóa từ khóa">✕</button>
+      </div>
+      <button type="button" class="search-close-btn" id="search-close-btn" aria-label="Đóng thanh tìm kiếm">
+        <span>Đóng</span>
+      </button>
+      <div class="search-results-dropdown" id="search-results-dropdown">
+        <div class="search-quick-tags">
+          <span class="search-tag-label">Gợi ý phổ biến:</span>
+          <div class="search-tag-items">
+            <a href="dich-vu-phat-trien-phan-mem.html">Phát triển phần mềm</a>
+            <a href="dich-vu-tu-van-giai-phap.html">Tư vấn giải pháp</a>
+            <a href="dich-vu-dao-tao-it.html">Đào tạo IT</a>
+            <a href="dich-vu-outsourcing.html">IT Outsourcing</a>
+            <a href="tuyen-dung.html">Tuyển dụng</a>
+            <a href="lien-he.html">Liên hệ</a>
+          </div>
+        </div>
+        <div class="search-live-list" id="search-live-list"></div>
+      </div>
+    </div>
+
+    <!-- Header Tools (Search + Theme Switcher where Tư vấn dự án used to be) -->
+    <div class="header-tools">
+      <button class="search-toggle" id="search-toggle" type="button" aria-label="Tìm kiếm nhanh (⌘K)"
+        title="Tìm kiếm nhanh (⌘K)">
+        <span class="search-icon-symbol">⌕</span>
+      </button>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Chuyển đổi giao diện sáng/tối"
+        title="Chuyển đổi giao diện sáng/tối">
+        <span class="theme-icon-sun">☀️</span>
+        <span class="theme-icon-moon">🌙</span>
+      </button>
+      <button class="menu" type="button" aria-label="Mở menu di động" aria-controls="main-nav"
+        aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
