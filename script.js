@@ -31,8 +31,17 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('click', (e) => {
     const menuBtn = e.target.closest('.menu');
     if (menuBtn) {
-      const menu = document.querySelector('.nav-wrap nav');
+      const menu = document.querySelector('.nav-wrap nav.main-nav') || document.querySelector('.nav-wrap nav');
+      const header = document.querySelector('.header');
+      const navWrap = document.querySelector('.nav-wrap');
+
+      // Close search if open
+      if (navWrap?.classList.contains('search-open')) {
+        closeInlineSearch();
+      }
+
       const isOpen = menu?.classList.toggle('open');
+      header?.classList.toggle('menu-open', isOpen);
       menuBtn.setAttribute('aria-expanded', String(isOpen));
       menuBtn.textContent = isOpen ? '✕' : '☰';
       document.body.style.overflow = isOpen ? 'hidden' : '';
@@ -41,12 +50,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const menuLink = e.target.closest('.nav-wrap nav a');
     if (menuLink) {
-      const menu = document.querySelector('.nav-wrap nav');
+      const menu = document.querySelector('.nav-wrap nav.main-nav') || document.querySelector('.nav-wrap nav');
+      const header = document.querySelector('.header');
       const menuBtn = document.querySelector('.menu');
       menu?.classList.remove('open');
+      header?.classList.remove('menu-open');
       menuBtn?.setAttribute('aria-expanded', 'false');
       if (menuBtn) menuBtn.textContent = '☰';
       document.body.style.overflow = '';
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      const menu = document.querySelector('.nav-wrap nav.main-nav') || document.querySelector('.nav-wrap nav');
+      const header = document.querySelector('.header');
+      const menuBtn = document.querySelector('.menu');
+      if (menu?.classList.contains('open')) {
+        menu.classList.remove('open');
+        header?.classList.remove('menu-open');
+        menuBtn?.setAttribute('aria-expanded', 'false');
+        if (menuBtn) menuBtn.textContent = '☰';
+        document.body.style.overflow = '';
+      }
+      closeInlineSearch();
     }
   });
 
@@ -127,6 +154,33 @@ document.addEventListener('DOMContentLoaded', () => {
     sliderContainer.addEventListener('mouseenter', stopAutoSlide);
     sliderContainer.addEventListener('mouseleave', startAutoSlide);
 
+    // Touch swipe gesture support for mobile & tablet
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchEndX = 0;
+    let touchEndY = 0;
+
+    sliderContainer.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      touchStartY = e.changedTouches[0].screenY;
+      stopAutoSlide();
+    }, { passive: true });
+
+    sliderContainer.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      touchEndY = e.changedTouches[0].screenY;
+      const diffX = touchEndX - touchStartX;
+      const diffY = touchEndY - touchStartY;
+      if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 40) {
+        if (diffX < 0) {
+          show(current + 1); // Swipe left -> Next
+        } else {
+          show(current - 1); // Swipe right -> Prev
+        }
+      }
+      startAutoSlide();
+    }, { passive: true });
+
     show(0);
     startAutoSlide();
   }
@@ -164,12 +218,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function openInlineSearch() {
     const navWrap = document.querySelector('.nav-wrap');
+    const header = document.querySelector('.header');
+    const menu = document.querySelector('.nav-wrap nav.main-nav') || document.querySelector('.nav-wrap nav');
+    const menuBtn = document.querySelector('.menu');
     const input = document.getElementById('inline-search-input');
     const searchBar = document.getElementById('inline-search-bar');
     const dropdown = document.getElementById('search-results-dropdown');
 
+    // Close mobile menu if open
+    if (menu?.classList.contains('open')) {
+      menu.classList.remove('open');
+      header?.classList.remove('menu-open');
+      menuBtn?.setAttribute('aria-expanded', 'false');
+      if (menuBtn) menuBtn.textContent = '☰';
+      document.body.style.overflow = '';
+    }
+
     if (navWrap && searchBar) {
       navWrap.classList.add('search-open');
+      header?.classList.add('search-active');
       searchBar.setAttribute('aria-expanded', 'true');
       if (dropdown) dropdown.classList.add('visible');
       setTimeout(() => input?.focus(), 80);
@@ -178,6 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function closeInlineSearch() {
     const navWrap = document.querySelector('.nav-wrap');
+    const header = document.querySelector('.header');
     const searchBar = document.getElementById('inline-search-bar');
     const dropdown = document.getElementById('search-results-dropdown');
     const input = document.getElementById('inline-search-input');
@@ -185,6 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (navWrap && searchBar) {
       navWrap.classList.remove('search-open');
+      header?.classList.remove('search-active');
       searchBar.setAttribute('aria-expanded', 'false');
       if (dropdown) dropdown.classList.remove('visible');
       if (input) input.value = '';
