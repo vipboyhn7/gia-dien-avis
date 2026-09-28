@@ -37,7 +37,11 @@ const SITE_HEADER_TEMPLATE = `
 <header class="header">
   <div class="shell nav-wrap">
     <a href="index.html" class="brand" aria-label="AVIS Việt Nam">
-      <img src="assets/avis-logo.jpg" alt="AVIS Việt Nam">
+      <img src="assets/logo-aviss.jpg" alt="AVIS Việt Nam">
+      <div class="brand-text">
+        <span class="brand-name">Avis</span>
+        <span class="brand-slogan">Tech Savvy, Customer Happy</span>
+      </div>
     </a>
 
     <!-- Category Menu Bar with Horizontal Scroll Support -->
@@ -59,7 +63,6 @@ const SITE_HEADER_TEMPLATE = `
       </div>
       <button type="button" class="search-close-btn" id="search-close-btn" aria-label="Đóng thanh tìm kiếm">
         <span>Đóng</span>
-        <kbd>Esc</kbd>
       </button>
       <div class="search-results-dropdown" id="search-results-dropdown">
         <div class="search-quick-tags">
@@ -85,7 +88,6 @@ const SITE_HEADER_TEMPLATE = `
       <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Chuyển đổi giao diện sáng/tối" title="Chuyển đổi giao diện sáng/tối">
         <span class="theme-icon-sun">☀️</span>
         <span class="theme-icon-moon">🌙</span>
-        <span class="theme-toggle-label">Giao diện</span>
       </button>
       <button class="menu" type="button" aria-label="Mở menu di động" aria-controls="main-nav" aria-expanded="false">☰</button>
     </div>
@@ -107,9 +109,15 @@ const SITE_FOOTER_TEMPLATE = `
   <div class="shell footer-grid">
     <div>
       <div class="footer-brand">
-        <img src="assets/avis-logo.jpg" alt="AVIS Vietnam">
-        <strong><span class="text-nowrap">CÔNG TY CỔ PHẦN</span><br><span class="text-nowrap">CÔNG NGHỆ AVIS VIỆT NAM</span></strong>
+        <a href="index.html" class="brand" aria-label="AVIS Việt Nam">
+          <img src="assets/logo-aviss.jpg" alt="AVIS Vietnam">
+          <div class="brand-text">
+            <span class="brand-name">Avis</span>
+            <span class="brand-slogan">Tech Savvy, Customer Happy</span>
+          </div>
+        </a>
       </div>
+      <p class="footer-company-name"><strong><span class="text-nowrap">CÔNG TY CỔ PHẦN</span> <span class="text-nowrap">CÔNG NGHỆ AVIS VIỆT NAM</span></strong></p>
       <p>Đơn vị tiên phong cung cấp giải pháp <span class="text-nowrap">công nghệ thông tin</span>, kiến trúc <span class="text-nowrap">phần mềm</span> cao cấp và đồng hành <span class="text-nowrap">chuyển đổi số</span> tin cậy cho <span class="text-nowrap">doanh nghiệp</span> Việt Nam.</p>
     </div>
     <div>

@@ -72,15 +72,24 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ==========================================================================
-  // 5. HERO SLIDER LOGIC
+  // 5. HERO SLIDER LOGIC (DYNAMIC AUTO-GENERATION OF DOTS & REAL-TIME ADAPTATION)
   // ==========================================================================
-  const slides = [...document.querySelectorAll('.hero-slide')];
-  const dots = [...document.querySelectorAll('.slider-dots button')];
   const sliderContainer = document.querySelector('.hero-slider');
+  const slides = [...document.querySelectorAll('.hero-slide')];
+  const dotsContainer = document.querySelector('.slider-dots');
   
-  if (slides.length) {
+  if (slides.length && sliderContainer) {
     let current = 0;
     let timer = null;
+
+    // Tự động sinh các nút dots dựa trên số lượng slide thực tế trong HTML
+    if (dotsContainer) {
+      dotsContainer.innerHTML = slides.map((_, i) => 
+        `<button type="button" aria-label="Mở slide ${i + 1}" class="${i === 0 ? 'active' : ''}"></button>`
+      ).join('');
+    }
+
+    const dots = dotsContainer ? [...dotsContainer.querySelectorAll('button')] : [];
 
     function show(index) {
       current = (index + slides.length) % slides.length;
@@ -115,8 +124,8 @@ document.addEventListener('DOMContentLoaded', () => {
       startAutoSlide();
     }));
 
-    sliderContainer?.addEventListener('mouseenter', stopAutoSlide);
-    sliderContainer?.addEventListener('mouseleave', startAutoSlide);
+    sliderContainer.addEventListener('mouseenter', stopAutoSlide);
+    sliderContainer.addEventListener('mouseleave', startAutoSlide);
 
     show(0);
     startAutoSlide();
