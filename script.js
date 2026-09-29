@@ -216,6 +216,23 @@ document.addEventListener('DOMContentLoaded', () => {
       .toLowerCase();
   }
 
+  let closeSearchTimeout = null;
+
+  function updateSearchOrigin() {
+    const searchToggle = document.getElementById('search-toggle');
+    const navWrap = document.querySelector('.nav-wrap');
+    if (searchToggle && navWrap) {
+      const toggleRect = searchToggle.getBoundingClientRect();
+      const navRect = navWrap.getBoundingClientRect();
+      const originX = (toggleRect.left + toggleRect.width / 2) - navRect.left;
+      const originY = (toggleRect.top + toggleRect.height / 2) - navRect.top;
+      navWrap.style.setProperty('--search-origin-x', `${Math.round(originX)}px`);
+      navWrap.style.setProperty('--search-origin-y', `${Math.round(originY)}px`);
+    }
+  }
+
+  window.addEventListener('resize', updateSearchOrigin, { passive: true });
+
   function openInlineSearch() {
     const navWrap = document.querySelector('.nav-wrap');
     const header = document.querySelector('.header');
@@ -235,11 +252,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (navWrap && searchBar) {
+      clearTimeout(closeSearchTimeout);
+      navWrap.classList.remove('search-closing');
+      updateSearchOrigin();
+
       navWrap.classList.add('search-open');
       header?.classList.add('search-active');
       searchBar.setAttribute('aria-expanded', 'true');
       if (dropdown) dropdown.classList.add('visible');
-      setTimeout(() => input?.focus(), 80);
+      setTimeout(() => input?.focus(), 100);
     }
   }
 
@@ -250,15 +271,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const dropdown = document.getElementById('search-results-dropdown');
     const input = document.getElementById('inline-search-input');
     const clearBtn = document.getElementById('search-clear-btn');
+    const searchToggle = document.getElementById('search-toggle');
 
     if (navWrap && searchBar) {
+      updateSearchOrigin();
       navWrap.classList.remove('search-open');
+      navWrap.classList.add('search-closing');
       header?.classList.remove('search-active');
       searchBar.setAttribute('aria-expanded', 'false');
-      if (dropdown) dropdown.classList.remove('visible');
-      if (input) input.value = '';
-      if (clearBtn) clearBtn.style.display = 'none';
-      renderSearchResults('');
+
+      // Trigger catch pulse on the search button right as everything collapses into it
+      if (searchToggle) {
+        searchToggle.classList.add('search-toggle-catch');
+        setTimeout(() => searchToggle.classList.remove('search-toggle-catch'), 600);
+      }
+
+      // Delay clearing and removing dropdown until collapse animation completes
+      clearTimeout(closeSearchTimeout);
+      closeSearchTimeout = setTimeout(() => {
+        navWrap.classList.remove('search-closing');
+        if (dropdown) dropdown.classList.remove('visible');
+        if (input) input.value = '';
+        if (clearBtn) clearBtn.style.display = 'none';
+        renderSearchResults('');
+      }, 380);
     }
   }
 

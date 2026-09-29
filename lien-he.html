@@ -8,7 +8,7 @@
   <meta name="description"
     content="Liên hệ với đội ngũ chuyên gia công nghệ của AVIS Việt Nam để nhận tư vấn lộ trình chuyển đổi số và phát triển phần mềm tối ưu.">
   <link rel="icon" type="image/jpeg" href="assets/avis-team.jpg">
-  <link rel="stylesheet" href="styles.css?v=2.6">
+  <link rel="stylesheet" href="styles.css?v=4.5">
 </head>
 
 <body>
@@ -20,7 +20,7 @@
       <div class="shell hero-grid">
         <div>
           <p class="eyebrow orange"><i></i>KẾT NỐI VỚI CHUYÊN GIA <i></i></p>
-          <h1>Bắt đầu câu chuyện số<br><strong>của doanh nghiệp bạn</strong></h1>
+          <h1>Bắt đầu câu chuyện số của doanh nghiệp bạn</h1>
           <p class="lead">Chia sẻ thách thức và mục tiêu của bạn. Đội ngũ kiến trúc sư giải pháp của AVIS sẽ liên hệ và
             đưa ra đề xuất kỹ thuật tối ưu trong vòng 24 giờ.</p>
         </div>
@@ -39,7 +39,11 @@
             kỳ vọng của bạn.</p>
 
           <div class="contact-note">
-            <b>✉</b>
+            <span class="contact-box-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+              </svg>
+            </span>
             <div>
               <small>EMAIL HỖ TRỢ &amp; HỢP TÁC</small>
               <a href="mailto:admin@avis.io.vn">admin@avis.io.vn</a>
@@ -47,7 +51,11 @@
           </div>
 
           <div class="contact-note">
-            <b>☎</b>
+            <span class="contact-box-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+              </svg>
+            </span>
             <div>
               <small>HOTLINE KỸ THUẬT 24/7</small>
               <a href="tel:0879423777">0879.423.777</a>
@@ -55,7 +63,11 @@
           </div>
 
           <div class="contact-note">
-            <b>⌖</b>
+            <span class="contact-box-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/>
+              </svg>
+            </span>
             <div>
               <small>VĂN PHÒNG ĐIỀU HÀNH</small>
               <span>Tầng 5, ADG Tower, 17 Lê Văn Thiêm, Thanh Xuân, Hà Nội</span>
@@ -63,10 +75,15 @@
           </div>
 
           <div class="contact-note">
-            <b>◷</b>
+            <span class="contact-box-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+              </svg>
+            </span>
             <div>
               <small>THỜI GIAN LÀM VIỆC</small>
-              <span>Thứ 2 – Thứ 7: 08:00 – 17:00 · Chủ nhật: NGHỈ</span>
+              <span>Thứ 2 – Thứ 6: 08:00 – 17:00</span>
+              <span>Thứ 7: 08:00 – 12:00 · Chủ nhật: NGHỈ</span>
             </div>
           </div>
         </div>
@@ -74,12 +91,12 @@
         <form class="contact-form" novalidate>
           <div class="form-row">
             <label>
-              Họ và tên <em>*</em>
+              <span class="form-label-title">Họ và tên <em>*</em></span>
               <input name="name" placeholder="Nguyễn Văn A" autocomplete="name" required>
               <span class="field-error">Vui lòng nhập họ và tên của bạn.</span>
             </label>
             <label>
-              Số điện thoại <em>*</em>
+              <span class="form-label-title">Số điện thoại <em>*</em></span>
               <input name="phone" type="tel" placeholder="0912 345 678" autocomplete="tel" required>
               <span class="field-error">Vui lòng nhập số điện thoại hợp lệ.</span>
             </label>
@@ -87,18 +104,18 @@
 
           <div class="form-row">
             <label>
-              Email làm việc <em>*</em>
+              <span class="form-label-title">Email làm việc <em>*</em></span>
               <input type="email" name="email" placeholder="name@company.com" autocomplete="email" required>
               <span class="field-error">Vui lòng nhập định dạng email hợp lệ.</span>
             </label>
             <label>
-              Tên công ty / Tổ chức
+              <span class="form-label-title">Tên công ty / Tổ chức</span>
               <input name="company" placeholder="Tên doanh nghiệp của bạn" autocomplete="organization">
             </label>
           </div>
 
           <label>
-            Mô tả yêu cầu bài toán hoặc dịch vụ cần tư vấn <em>*</em>
+            <span class="form-label-title">Mô tả yêu cầu bài toán hoặc dịch vụ cần tư vấn <em>*</em></span>
             <textarea name="message" rows="5"
               placeholder="Chia sẻ tóm tắt về dự án, yêu cầu kỹ thuật hoặc ngân sách dự kiến của bạn..."
               required></textarea>
@@ -106,7 +123,7 @@
           </label>
 
           <div class="form-footer">
-            <p>Thông tin của bạn được bảo mật tuyệt đối theo chính sách bảo mật dữ liệu AVIS.</p>
+            <p>Thông tin của bạn được bảo mật tuyệt đối <br> theo chính sách bảo mật dữ liệu AVIS.</p>
             <button class="button" type="submit">Gửi yêu cầu tư vấn →</button>
           </div>
         </form>
@@ -117,7 +134,7 @@
   <!-- SITE FOOTER (Synchronized from footer.html / components.js) -->
   <div id="site-footer"></div>
 
-  <script src="components.js?v=2.6"></script>
+  <script src="components.js?v=4.0"></script>
   <script src="script.js?v=2.6" defer></script>
 </body>
 
